@@ -1,0 +1,69 @@
+WATERWORKS OPERATIONS MANUAL — CHAPTER 4: PRESSURE MANAGEMENT
+Document ID: WOM-CH4-2023
+Revision: 3.1 | Date: March 2023
+
+4.1 OVERVIEW
+--------------
+Pressure management is one of the most critical aspects of water distribution network
+operations. Proper pressure control minimises pipe bursts, reduces leakage, extends
+infrastructure lifespan, and maintains consistent service delivery to consumers.
+
+4.2 OPERATING PRESSURE THRESHOLDS
+------------------------------------
+The following pressure limits apply to all zones in the distribution network:
+
+  Minimum service pressure (consumer tap):    1.5 bar (150 kPa)
+  Maximum service pressure (consumer tap):    6.0 bar (600 kPa)
+  Normal operating range (main distribution): 3.0 – 5.0 bar
+  High-pressure alarm threshold:              6.5 bar
+  Emergency shutdown threshold:               7.5 bar
+  Low-pressure alarm threshold:               1.0 bar
+
+Deviations from the normal operating range must be logged in the SCADA system
+and investigated within 4 hours.
+
+4.3 PRESSURE REDUCING VALVES (PRVs)
+--------------------------------------
+PRVs regulate pressure at zone boundaries. Each PRV installation requires:
+  - Weekly visual inspection
+  - Monthly pressure calibration check (±0.05 bar tolerance)
+  - Annual replacement of diaphragm seals
+
+If a PRV fails to regulate within tolerance, isolate the zone and escalate to the
+maintenance team. Do not attempt field repair without an approved work order.
+
+4.4 SURGE AND TRANSIENT CONTROL
+----------------------------------
+Water hammer events occur when flow velocity changes abruptly (e.g., rapid pump
+start/stop or valve closure). Prevention measures:
+  - Controlled pump ramp-up: minimum 30-second start sequence
+  - Slow-closing actuator valves (close time ≥ 15 seconds for DN > 200mm)
+  - Air release valves installed at high points in the network
+
+Acceptable transient pressure spike: ≤ 1.5× operating pressure for < 2 seconds.
+
+4.5 SENSOR AND TELEMETRY REQUIREMENTS
+----------------------------------------
+Pressure sensors must meet the following specifications:
+  - Accuracy: ±0.25% full-scale
+  - Resolution: 0.01 bar
+  - Sampling interval: 15 seconds (operational), 1 second (event capture)
+  - Communication protocol: MQTT over 4G/LTE with TLS 1.2 encryption
+  - Data retention: 12 months on local logger, 36 months on cloud archive
+
+All sensors must be calibrated every 6 months against a NIST-traceable reference.
+Calibration records must be stored in the asset management system.
+
+4.6 ALARM RESPONSE PROCEDURES
+--------------------------------
+  High pressure alarm (>6.5 bar):
+    1. Acknowledge alarm in SCADA within 5 minutes
+    2. Check upstream PRV settings
+    3. Verify pump operating point
+    4. Notify shift supervisor if not resolved within 20 minutes
+
+  Low pressure alarm (<1.0 bar):
+    1. Acknowledge alarm in SCADA within 5 minutes
+    2. Check for downstream burst (correlate with flow anomaly alerts)
+    3. Isolate affected zone if burst confirmed
+    4. Issue consumer advisory if outage exceeds 30 minutes
