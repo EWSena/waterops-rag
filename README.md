@@ -196,7 +196,6 @@ The water infrastructure domain was chosen deliberately: it mirrors real operati
 
 **Elian Wira Sena**
 AI Engineer · Hamburg, Germany
-[LinkedIn](https://linkedin.com/in/elianwirasena) · [Email](mailto:elianwirasena@yahoo.de)
 
 ---
 
